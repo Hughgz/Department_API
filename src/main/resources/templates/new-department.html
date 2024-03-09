@@ -1,0 +1,24 @@
+	<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Department Page</title>
+</head>
+<body>
+  <!--  -->
+    <h1>Department Add</h1>
+    <form th:action="@{/department/new}" method = "post" th:object="${department}">
+		<div>
+			<label>ID</label>
+			<input type="text" placeholder="Enter id" name="id">
+		</div>
+      
+      <div>
+			<label>Name</label>
+			<input type="text" placeholder="Enter name" th:field="*{name}">
+		</div>
+		<p th:errors="*{name}"></p>
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

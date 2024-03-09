@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html layout:decorate="/template.html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>User List</title>
+        
+    </head>
+    <body>
+        <div>
+            	<div layout:fragment="title"><h1 style="text-align: center;">Department List</h1></div>
+	           	<h4><a th:href="@{/department/new}" class="btn btn-primary">Add</a></h4>
+	           	<div  layout:fragment="content">
+					  <h4><a th:href="@{/department/new}" class="btn btn-primary">Add</a></h4>
+		            <form th:action="@{/department/search}" method="get" th:object="${searchDTO}">
+		                <input name="name" placeholder="Enter keyword..." th:value="${searchdto?.getName()}">
+		              	<p th:errors="*{name}"></p>
+		                <input name="currentPage" placeholder="Enter current page..." th:value="${searchdto?.getCurrentPage()}">
+		                <input name="size" placeholder="Enter size..." th:value="${searchdto?.getSize()}">
+		                <input name="sortedField" placeholder="Enter properties" th:value="${searchdto?.getSortedField()}">
+		                <button type="submit" class="btn btn-primary">Search</button>
+		            </form>
+		            <table class="table table-bordered">
+		                <thead>
+		                    <tr>
+		                        <th>Id</th>
+		                        <th>Name</th>
+		                        <th>Create At</th>
+		                        <th>Update At</th>
+		                       	<th>Option</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                    <tr th:each="u : ${departmentList}">
+		                        <td th:text="${u.id}"></td>
+		                        <td th:text="${u.name}"></td>
+		                        <td th:text="${u.createAt}"></td>
+		                        <td th:text="${u.updateAt}"></td>
+		                        <td>
+		                            <a th:href="@{'/department/delete?id=' + ${u.getId()}}" id="delete">Delete</a>
+		                            <a th:href="@{'/department/edit?id=' + ${u.getId()}}" id="edit">Edit</a>
+		                        </td>
+		                    </tr>
+		                </tbody>
+		            </table>
+            </div>
+        </div>
+    </body>
+</html>

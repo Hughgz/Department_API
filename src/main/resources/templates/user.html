@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User Page</title>
+</head>
+<body>
+  <!--  -->
+    <h1>User Add</h1>
+    <form th:action="@{/user/new}" method = "post" enctype="multipart/form-data" th:object="${user}">
+		<div>
+			<label>ID</label>
+			<input type="text" placeholder="Enter id" name="id">
+		</div>
+      
+      <div>
+			<label>Name</label>
+			<input type="text" placeholder="Enter name" th:field="*{name}">
+		</div>
+      <p th:errors="*{name}"></p>
+      <div>
+			<label>Age</label>
+			<input type="number" placeholder="Enter age" th:field="*{age}">
+		</div>
+      <p th:errors="*{age}"></p>
+      <div>
+			<label>Username</label>
+			<input type="text" placeholder="Enter username" th:field="*{username}">
+		</div>
+      <div>
+			<label>Password</label>
+			<input type="password" placeholder="Enter password" th:field="*{password}">
+		</div>
+      <div>
+			
+			<input type="file" placeholder="" name="file">
+		</div>
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

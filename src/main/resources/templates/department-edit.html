@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User Page</title>
+</head>
+<body>
+  <!--  -->
+    <h1>Department List</h1>
+    
+    <form th:action="@{/department/edit}" method = "post">
+      <input type="text" name="id" th:value="${department.id}" readonly>
+      <input type="text" th:value="${department.name}" name = "name">
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

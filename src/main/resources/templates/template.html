@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>User List</title>
+    	<style>
+            #delete {
+                margin-right: 20px;
+            }
+            ul li{
+				list-style: none;
+				margin-left: -40px;
+				margin-bottom: 10px;
+			}
+        </style>
+</head>
+<body>
+	<div class="container">
+		<div layout:fragment="title"></div>
+    	<div th:replace="/layout.html :: menu"></div>
+    	<div layout:fragment="content"></div>
+    	<div th:replace="/layout.html :: footer"></div>
+	</div>
+</body>
+</html>

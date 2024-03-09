@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html layout:decorate="/template.html">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <title>User List</title>
+        <style>
+            #delete {
+                margin-right: 20px;
+            }
+            ul li{
+				list-style: none;
+				margin-left: -40px;
+				margin-bottom: 10px;
+			}
+        </style>
+    </head>
+    <body >
+        <div >
+            <div layout:fragment="title"><h2 style="text-align: center;">User List</h2></div>
+            <div layout:fragment="content">
+	            <h4><a th:href="@{/user/new}" class="btn btn-primary">Add</a></h4>
+	            <form th:action="@{/user/search}" method="get" th:object="${searchDTO}">
+	                <input name="name" placeholder="Enter keyword..." th:value="${searchdto?.getName()}">
+	              	<p th:errors="*{name}"></p>
+	                <input name="currentPage" placeholder="Enter current page..." th:value="${searchdto?.getCurrentPage()}">
+	                <input name="size" placeholder="Enter size..." th:value="${searchdto?.getSize()}">
+	                <input name="sortedField" placeholder="Enter properties" th:value="${searchdto?.getSortedField()}">
+	                <button type="submit" class="btn btn-primary">Search</button>
+	            </form>
+	            <p th:text="${totalPage}"></p>
+	            <p th:text="${totalElement}"></p>
+	            <table class="table table-bordered">
+	                <thead>
+	                    <tr>
+	                        <th th:text="#{user.id}"></th>
+	                        <th th:text="#{user.name}"></th>
+	                        <th th:text="#{user.age}"></th>
+	                        <th th:text="#{user.username}"></th>
+	                        <th th:text="#{user.password}"></th>
+	                        <th th:text="#{user.option}"></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr th:each="u : ${userList}">
+	                        <td th:text="${u.id}"></td>
+	                        <td th:text="${u.name}"></td>
+	                        <td th:text="${u.age}"></td>
+	                        <td th:text="${u.username}"></td>
+	                        <td th:text="${u.password}"></td>
+	                        <td>
+	                            <a th:href="@{'/user/delete?id=' + ${u.getId()}}" id="delete">Delete</a>
+	                            <a th:href="@{'/user/edit?id=' + ${u.getId()}}" id="edit">Edit</a>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+            </div>
+        </div>
+    </body>
+</html>

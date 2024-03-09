@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit User Page</title>
+</head>
+<body>
+  <!--  -->
+    <h1>User List</h1>
+    
+    <form th:action="@{/user/edit}" method = "post">
+      <input type="text" name="id" th:value="${user.id}" readonly>
+      <input type="text" th:value="${user.name}" name = "name">
+      <input type="text" th:value="${user.age}" name="age">
+      <input type="text" th:value="${user.username}" name = "username">
+      <input type="text" th:value="${user.password}" name="password">
+      <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
